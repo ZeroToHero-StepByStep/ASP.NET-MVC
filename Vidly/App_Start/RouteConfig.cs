@@ -13,10 +13,9 @@ namespace Vidly
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //when define the route , the schedule is very important , from the very specific to the generic 
-            //the third argument here is to set the default 
-            //the fourth argument here is to set the constraint
-            routes.MapRoute("MoviesByReleaseDate","movies/released/{year}/{month}" , new {controller="Movies" , action="ByReleaseDate"} , new {/*year=@"\d{4}" ,*/ year=@"2015|2016", month=@"\d{2}"});
+            routes.MapMvcAttributeRoutes();
+
+                
 
             routes.MapRoute(
                 name: "Default",
