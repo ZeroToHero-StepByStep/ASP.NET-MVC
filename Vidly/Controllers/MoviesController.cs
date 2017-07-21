@@ -15,8 +15,8 @@ namespace Vidly.Controllers
         {
             var movie = new Movie() {Name = "Shrek!"};
             //One way to pass data to the view is ViewData dictionary 
-            ViewData["Movie"] = movie;
-            return View();
+           
+            return View(movie);
           
         }
 
