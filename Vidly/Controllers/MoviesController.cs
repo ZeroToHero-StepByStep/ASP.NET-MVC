@@ -39,5 +39,13 @@ namespace Vidly.Controllers
             }
             return Content(String.Format("pageIndex={0} & sortBy={1}", pageIndex, sortBy));
         }
+
+
+        //A quick way to create an Action: mvcAction4(then press tab) 
+        public ActionResult ByReleaseDate( int year , int month )
+        {
+
+            return Content(year +"/" + month);
+        }
     }
 }
