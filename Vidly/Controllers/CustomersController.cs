@@ -10,22 +10,37 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+
+        private ApplicationDbContext _context;
+
+
+        public CustomersController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+
+        // Dbcontext is a disposable objet , so we need to dispose it properly
+        // the proper way to dispose it is  to override dispose method
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         // GET: Customers
         public ActionResult Index()
         {
-           
-//            var customerViewModel = new CustomerViewModel
-//            {
-//                Customers = GetCustomers() 
-//            };
-            var customers = GetCustomers();
+            
+            //when the following line is executed , EF is not going to query the database
+            //this is called deffered execution , the query will execute when it iterates 
+            //the customers object 
+            var customers = _context.Customers;     
 
             return View(customers);
         }
 
         public ActionResult Detail(int id)
         {
-            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -33,15 +48,6 @@ namespace Vidly.Controllers
             return View(customer);
             //return Content("id =" + id);
         }
-
-        private List<Customer> GetCustomers()
-        {
-            var customers = new List<Customer>
-            {
-                new Customer {Name = "Jhon Smith", Id = 1},
-                new Customer {Name = "Mary Williams", Id = 2}
-            };
-            return customers;
-        }
+        
     }
 }
