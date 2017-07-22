@@ -21,5 +21,7 @@ namespace Vidly.Models
         //we may only need a foreign key so we can add another property here : MembershpTypeId 
         //EF can recognise this convention and tread this as a foreign key.
         public byte MembershipTypeId { get; set; }
+
+       
     }
 }
