@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+
 
 namespace Vidly.Controllers
 {
@@ -36,5 +35,42 @@ namespace Vidly.Controllers
         {
             return Content(year +"/" + month);
         }
+
+
+        public ActionResult Index()
+        {
+            MovieViewModel movies = new MovieViewModel()
+            {
+                Movies = GetMovies()
+            };
+            return View(movies);
+        }
+
+        public ActionResult Detail(int id)
+        {
+            var movie = GetMovies().SingleOrDefault(c => c.Id == id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
+
+ 
+
+        private List<Movie> GetMovies()
+        {
+            var movies = new List<Movie>
+            {
+                new Movie {Name = "Shrek", Id = 1},
+                new Movie {Name = "Wall-e", Id = 2}
+
+            };
+        
+            return movies;
+
+        }
+        
     }
 }
