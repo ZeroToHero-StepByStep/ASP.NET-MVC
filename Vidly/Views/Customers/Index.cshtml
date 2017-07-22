@@ -27,6 +27,7 @@ else
         <thead>
         <tr >
             <th>Cusomer</th>
+            <th>Discount Rate</th>
         </tr>
         </thead>
         <tbody>
@@ -40,6 +41,7 @@ else
                         id = customer.Id
                     } , null)
                 </td>
+                <td>@customer.MembershipType.DiscountRate%</td>
             </tr>
         }
         </tbody>
