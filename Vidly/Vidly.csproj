@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201707220737427_Add MembershipType.Designer.cs">
       <DependentUpon>201707220737427_Add MembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707220803397_ChangeSinUpAttributeToSignUpFeeInMembershipTypeModel.cs" />
+    <Compile Include="Migrations\201707220803397_ChangeSinUpAttributeToSignUpFeeInMembershipTypeModel.Designer.cs">
+      <DependentUpon>201707220803397_ChangeSinUpAttributeToSignUpFeeInMembershipTypeModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -290,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707220737427_Add MembershipType.resx">
       <DependentUpon>201707220737427_Add MembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707220803397_ChangeSinUpAttributeToSignUpFeeInMembershipTypeModel.resx">
+      <DependentUpon>201707220803397_ChangeSinUpAttributeToSignUpFeeInMembershipTypeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
