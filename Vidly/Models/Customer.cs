@@ -13,7 +13,7 @@ namespace Vidly.Models
         public string Name { get; set; }
         public bool IsSubscribedToNewsLetter { get; set; }
 
-
+        [Display(Name="Date of Birth")]
         public DateTime? BirthDate { get; set; }
         //MembershipType is called a naviation property becuase it allows us 
         //to navigate  from one type to another. In this case : Custoemr->Membershiptype
