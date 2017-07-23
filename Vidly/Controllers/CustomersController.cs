@@ -16,6 +16,14 @@ namespace Vidly.Controllers
         }
 
 
+
+        public ActionResult New()
+        {
+
+            return View();
+        }
+
+
         // Dbcontext is a disposable objet , so we need to dispose it properly
         // the proper way to dispose it is  to override dispose method
         protected override void Dispose(bool disposing)
