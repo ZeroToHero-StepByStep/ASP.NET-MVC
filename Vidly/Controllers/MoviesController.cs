@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
@@ -9,11 +11,17 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
-        
+        private ApplicationDbContext _context;
+
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
         //Get: Movies/Random
         public ActionResult Random()
         {
-            var movie = new Movie() {Name = "Shrek!"};
+            var movie = new Movie() { Name = "Shrek!" };
             //One way to pass data to the view is ViewData dictionary 
             var customers = new List<Customer>
             {
@@ -26,7 +34,7 @@ namespace Vidly.Controllers
                 Customers = customers
             };
             return View(viewModel);
-          
+
         }
 
 
@@ -39,16 +47,17 @@ namespace Vidly.Controllers
 
         public ActionResult Index()
         {
+            
             MovieViewModel movies = new MovieViewModel()
             {
-                Movies = GetMovies()
+                Movies = _context.Movies.Include(c => c.Genre) 
             };
             return View(movies);
         }
 
         public ActionResult Detail(int id)
         {
-            var movie = GetMovies().SingleOrDefault(c => c.Id == id);
+            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -57,20 +66,6 @@ namespace Vidly.Controllers
         }
 
 
- 
-
-        private List<Movie> GetMovies()
-        {
-            var movies = new List<Movie>
-            {
-                new Movie {Name = "Shrek", Id = 1},
-                new Movie {Name = "Wall-e", Id = 2}
-
-            };
-        
-            return movies;
-
-        }
         
     }
 }

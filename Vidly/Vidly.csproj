@@ -227,9 +227,50 @@
     <Compile Include="Migrations\201707230057056_PopulateBirthDateInCustomersTable2.Designer.cs">
       <DependentUpon>201707230057056_PopulateBirthDateInCustomersTable2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707230114257_AddGenreModel.cs" />
+    <Compile Include="Migrations\201707230114257_AddGenreModel.Designer.cs">
+      <DependentUpon>201707230114257_AddGenreModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230118377_AddMoviesToDbContext.cs" />
+    <Compile Include="Migrations\201707230118377_AddMoviesToDbContext.Designer.cs">
+      <DependentUpon>201707230118377_AddMoviesToDbContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230122023_AddPorpertiesInMovieModel.cs" />
+    <Compile Include="Migrations\201707230122023_AddPorpertiesInMovieModel.Designer.cs">
+      <DependentUpon>201707230122023_AddPorpertiesInMovieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230134463_AddGenreAndForeignKeyToCustomerModel.cs" />
+    <Compile Include="Migrations\201707230134463_AddGenreAndForeignKeyToCustomerModel.Designer.cs">
+      <DependentUpon>201707230134463_AddGenreAndForeignKeyToCustomerModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230214066_PopulateDataInGenresTable.cs" />
+    <Compile Include="Migrations\201707230214066_PopulateDataInGenresTable.Designer.cs">
+      <DependentUpon>201707230214066_PopulateDataInGenresTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230300006_MoveGenreAndGenreIdPorpertyToMovieModel.cs" />
+    <Compile Include="Migrations\201707230300006_MoveGenreAndGenreIdPorpertyToMovieModel.Designer.cs">
+      <DependentUpon>201707230300006_MoveGenreAndGenreIdPorpertyToMovieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230342112_PopulateDataInMoviesTable.cs" />
+    <Compile Include="Migrations\201707230342112_PopulateDataInMoviesTable.Designer.cs">
+      <DependentUpon>201707230342112_PopulateDataInMoviesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230504054_DeleteNumberInStock.cs" />
+    <Compile Include="Migrations\201707230504054_DeleteNumberInStock.Designer.cs">
+      <DependentUpon>201707230504054_DeleteNumberInStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230505202_AddAttributeNumberInStockInMovieModel.cs" />
+    <Compile Include="Migrations\201707230505202_AddAttributeNumberInStockInMovieModel.Designer.cs">
+      <DependentUpon>201707230505202_AddAttributeNumberInStockInMovieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707230507097_UpdateDataInMoviesTable.cs" />
+    <Compile Include="Migrations\201707230507097_UpdateDataInMoviesTable.Designer.cs">
+      <DependentUpon>201707230507097_UpdateDataInMoviesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -353,6 +394,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707230057056_PopulateBirthDateInCustomersTable2.resx">
       <DependentUpon>201707230057056_PopulateBirthDateInCustomersTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230114257_AddGenreModel.resx">
+      <DependentUpon>201707230114257_AddGenreModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230118377_AddMoviesToDbContext.resx">
+      <DependentUpon>201707230118377_AddMoviesToDbContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230122023_AddPorpertiesInMovieModel.resx">
+      <DependentUpon>201707230122023_AddPorpertiesInMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230134463_AddGenreAndForeignKeyToCustomerModel.resx">
+      <DependentUpon>201707230134463_AddGenreAndForeignKeyToCustomerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230214066_PopulateDataInGenresTable.resx">
+      <DependentUpon>201707230214066_PopulateDataInGenresTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230300006_MoveGenreAndGenreIdPorpertyToMovieModel.resx">
+      <DependentUpon>201707230300006_MoveGenreAndGenreIdPorpertyToMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230342112_PopulateDataInMoviesTable.resx">
+      <DependentUpon>201707230342112_PopulateDataInMoviesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230504054_DeleteNumberInStock.resx">
+      <DependentUpon>201707230504054_DeleteNumberInStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230505202_AddAttributeNumberInStockInMovieModel.resx">
+      <DependentUpon>201707230505202_AddAttributeNumberInStockInMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707230507097_UpdateDataInMoviesTable.resx">
+      <DependentUpon>201707230507097_UpdateDataInMoviesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

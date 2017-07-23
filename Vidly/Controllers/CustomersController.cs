@@ -1,6 +1,6 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using System.Linq ;
+using System.Data.Entity ;
 using Vidly.Models;
 
 namespace Vidly.Controllers
@@ -9,7 +9,6 @@ namespace Vidly.Controllers
     {
 
         private ApplicationDbContext _context;
-
 
         public CustomersController()
         {
@@ -30,7 +29,7 @@ namespace Vidly.Controllers
             //when the following line is executed , EF is not going to query the database
             //this is called deffered execution , the query will execute when it iterates 
             //the customers object 
-            var customers = _context.Customers.Include( c =>c.MembershipType);     
+            var customers = _context.Customers.Include(c => c.MembershipType);  
 
             return View(customers);
         }
