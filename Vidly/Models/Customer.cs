@@ -14,6 +14,9 @@ namespace Vidly.Models
         [StringLength(255)]
         public string Name { get; set; }
         public bool IsSubscribedToNewsLetter { get; set; }
+
+
+        public DateTime? BirthDate { get; set; }
         //MembershipType is called a naviation property becuase it allows us 
         //to navigate  from one type to another. In this case : Custoemr->Membershiptype
         public MembershipType MembershipType { get; set; }
