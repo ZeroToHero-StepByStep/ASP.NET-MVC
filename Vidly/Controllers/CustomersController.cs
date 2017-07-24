@@ -58,11 +58,16 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
-        [HttpPost]
-        public ActionResult Create(NewCustomerViewModel viewModel)
-        {
 
-            return View();
+        //if we change the type from ViewCustomreModel to Customer, MVC Framewrok is 
+        //smater enough to bind  this object to form data because all the keys in the 
+        //form data have prefixs with customer, that's how model binding works 
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
         }
     }
 }
