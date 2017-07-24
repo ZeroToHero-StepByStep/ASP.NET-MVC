@@ -63,9 +63,37 @@ namespace Vidly.Controllers
         //smater enough to bind  this object to form data because all the keys in the 
         //form data have prefixs with customer, that's how model binding works 
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
-            _context.Customers.Add(customer);
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                /*
+                TryUpdateModel(customerInDb);
+                this is the official approach in the official documment but this apporach 
+                has some issues. First , it opens the seccurity holes , this approach updates 
+                all properties in the customer. Sometimes we don't want users to update all 
+                propertis. Only users some special pervilage should be able to update all properties
+                Another issue is that in the TryUpdateModel , melicious user can modify reuqest data 
+                and add addition key value pairs in form data. And this method will successfully update 
+                all properties.
+                Although there is one method to solve this problem , like this 
+                TryUpdateModel(customerInDb, "" , new string[] { "Name" , "Email"}) 
+                It introduces magic strings for example "Name" , "Email". If one day some propertis are 
+                modfied , we need also need to change these magic strings. 
+                The bottom line is that you should not bindly read all the data in the requset data and put 
+                that into the objects. 
+                */
+
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.MembershipType = customer.MembershipType;
+                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+            }
             _context.SaveChanges();
             return RedirectToAction("Index", "Customers");
         }
