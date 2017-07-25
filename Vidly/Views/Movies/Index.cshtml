@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<h1>Movies</h1>
+@Html.ActionLink("New Movie" , "New" , "Movies" , new {@class="btn btn-primary"})
 @if (!Model.Movies.Any())
 {
     <p>There is no movie here</p>
@@ -14,12 +17,8 @@ else
     <table class="table table-bordered table-hover">
         <thead>
         <tr >
-            <th>
-                <h2>Movies</h2>
-            </th>
-            <th>
-                <h2>Genre</h2>
-            </th>
+            <th>Movies</th>
+            <th>Genre</th>
         </tr>
         </thead>
         <tbody>

@@ -171,6 +171,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MovieFormViewModel.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -267,6 +268,18 @@
     <Compile Include="Migrations\201707230507097_UpdateDataInMoviesTable.Designer.cs">
       <DependentUpon>201707230507097_UpdateDataInMoviesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707250303102_ChangeDateAddedPropertyToBeNullableInMovieModel.cs" />
+    <Compile Include="Migrations\201707250303102_ChangeDateAddedPropertyToBeNullableInMovieModel.Designer.cs">
+      <DependentUpon>201707250303102_ChangeDateAddedPropertyToBeNullableInMovieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707250326559_DropGenreIdAndGenre_IdColumnInMoviesTable.cs" />
+    <Compile Include="Migrations\201707250326559_DropGenreIdAndGenre_IdColumnInMoviesTable.Designer.cs">
+      <DependentUpon>201707250326559_DropGenreIdAndGenre_IdColumnInMoviesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707250346409_AddForeignKeyGenreIdToMovieModel.cs" />
+    <Compile Include="Migrations\201707250346409_AddForeignKeyGenreIdToMovieModel.Designer.cs">
+      <DependentUpon>201707250346409_AddForeignKeyGenreIdToMovieModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -345,6 +358,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\Detail.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,6 +440,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707230507097_UpdateDataInMoviesTable.resx">
       <DependentUpon>201707230507097_UpdateDataInMoviesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707250303102_ChangeDateAddedPropertyToBeNullableInMovieModel.resx">
+      <DependentUpon>201707250303102_ChangeDateAddedPropertyToBeNullableInMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707250326559_DropGenreIdAndGenre_IdColumnInMoviesTable.resx">
+      <DependentUpon>201707250326559_DropGenreIdAndGenre_IdColumnInMoviesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707250346409_AddForeignKeyGenreIdToMovieModel.resx">
+      <DependentUpon>201707250346409_AddForeignKeyGenreIdToMovieModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>New Customer</h2>
-@using (Html.BeginForm("Save", "Customers"))
+@using (Html.BeginForm("Save", "Customers"))    
 {
     <div class="form-group">
         @Html.TextBoxFor( m => m.Customer.Name , new { @class = " form-control"})
