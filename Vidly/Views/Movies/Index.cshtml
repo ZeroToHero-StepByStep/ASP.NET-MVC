@@ -7,7 +7,7 @@
 
 
 <h1>Movies</h1>
-@Html.ActionLink("New Movie" , "New" , "Movies" , new {@class="btn btn-primary"})
+@Html.ActionLink("New Movie" , "New" , "Movies" , null, new {@class="btn btn-primary"})
 @if (!Model.Movies.Any())
 {
     <p>There is no movie here</p>

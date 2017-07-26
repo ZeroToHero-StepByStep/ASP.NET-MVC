@@ -1,6 +1,8 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
@@ -65,22 +67,27 @@ namespace Vidly.Controllers
             return View(movie);
         }
 
-        public ActionResult New(string s)
+        public ActionResult New()
         {
-            var viewModel = new MovieFormViewModel()
+//            var dateTime = Convert.ToDateTime("2017");
+//            Movie movie = new Movie();
+      
+            var viewModel = new MovieFormViewModel
             {
-                Genres = _context.Genres.ToList()
+                Genres = _context.Genres.ToList(),
+//                Movie = movie  
             };
             return View("MovieForm" , viewModel);
         }
 
-
+        [HttpPost]
         public ActionResult Save( Movie movie)
         {
             if (movie.Id == 0)
             {
+               
+                movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
-
             }
             _context.SaveChanges();
             return RedirectToAction("Index");

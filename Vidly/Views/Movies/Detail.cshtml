@@ -1,4 +1,5 @@
-﻿@model Vidly.Models.Movie
+﻿@using System.Globalization
+@model Vidly.Models.Movie
 
 @{
     ViewBag.Title = "title";
@@ -7,5 +8,6 @@
 
 <h2>@Model.Name</h2>
 <h2>Relase Date: @Model.ReleaseDate.ToString("dddd,MMMM,d,yyyy")</h2>
-<h2>Date Added: @Model.DateAdded.ToString("dddd,MMMM,d,yyyy")</h2>
+@*<h2>Date Added: @DateTime.ParseExact(Model.DateAdded.ToString() , "dddd,MMMM,d,yyyy" , CultureInfo.InvariantCulture) </h2>*@
+<h2>Date Added: @Model.DateAdded.ToString("dddd,MMMM,d,yyyy") </h2>
 <h2>Number in Stock: @Model.NumberInStock</h2>
