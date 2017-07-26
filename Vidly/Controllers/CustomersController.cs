@@ -105,12 +105,12 @@ namespace Vidly.Controllers
             {
                 return HttpNotFound();
             }
-            var viewModel = new CustomerFormViewModel
+            var customerFormViewModel = new CustomerFormViewModel
             {
                 Customer = customer,
                 MembershipTypes = _context.MembershipTypes.ToList()
             }; 
-            return View("CustomerForm" , viewModel);
+            return View("CustomerForm" , customerFormViewModel);
         }
     }
 }
