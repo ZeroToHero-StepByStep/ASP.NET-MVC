@@ -72,9 +72,15 @@ namespace Vidly.Controllers
 //            var dateTime = Convert.ToDateTime("2017");
 //            Movie movie = new Movie();
       
-            var viewModel = new MovieFormViewModel
+//            var viewModel = new MovieFormViewModel()
+//            {
+//                Genres = _context.Genres.ToList()
+//            };
+            var viewModel = new MovieFormViewModel()
             {
-                Genres = _context.Genres.ToList()
+                Genres = _context.Genres.ToList() , 
+                ReleaseDate = null 
+
             };
             return View("MovieForm" , viewModel);
         }
@@ -84,7 +90,6 @@ namespace Vidly.Controllers
         {
             if (movie.Id == 0)
             {
-
                 movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
             }
@@ -108,9 +113,8 @@ namespace Vidly.Controllers
             {
                 return HttpNotFound();
             }
-            var movieFormViewModel = new MovieFormViewModel
+            var movieFormViewModel = new MovieFormViewModel (movie) 
             {
-                Movie = movie,
                 Genres = _context.Genres
             };
             return View("MovieForm", movieFormViewModel);
