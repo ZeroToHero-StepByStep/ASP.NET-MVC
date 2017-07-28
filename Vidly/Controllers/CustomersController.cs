@@ -98,7 +98,6 @@ namespace Vidly.Controllers
                 The bottom line is that you should not bindly read all the data in the requset data and put 
                 that into the objects. 
                 */
-
                 customerInDb.Name = customer.Name;
                 customerInDb.BirthDate = customer.BirthDate;
                 customerInDb.MembershipType = customer.MembershipType;

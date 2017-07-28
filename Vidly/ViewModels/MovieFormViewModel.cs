@@ -23,20 +23,13 @@ namespace Vidly.ViewModels
         [Required]
         [Range(1,20)]
         [Display(Name="Number in Stock")]
-        public  int NumberInStock{ get; set; }
+        public  int? NumberInStock{ get; set; }
 
 
         public string Title
         {
             get { return Id == 0 ?   "New Movie" : "Edit Movie" ; } 
         }
-
-
-        //        public MovieFormViewModel()
-        //        {
-        //            Id = 0;
-        //        }
-
 
         public MovieFormViewModel(Movie movie)
         {
