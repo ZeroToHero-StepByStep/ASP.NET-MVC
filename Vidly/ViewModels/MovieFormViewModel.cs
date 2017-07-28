@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 using Vidly.Models;
 
 namespace Vidly.ViewModels
@@ -13,11 +11,18 @@ namespace Vidly.ViewModels
         public IEnumerable<Genre> Genres { get; set; }
 
         public int  Id { get; set; }
+        
+        [Required]
         public string Name { get; set; }
-
+        [Display(Name="Genre")]
         public int GenreId { get; set; }
+       
         public DateTime? ReleaseDate { get; set; }
 
+     
+        [Required]
+        [Range(1,20)]
+        [Display(Name="Number in Stock")]
         public  int NumberInStock{ get; set; }
 
 
@@ -27,13 +32,13 @@ namespace Vidly.ViewModels
         }
 
 
-//        public MovieFormViewModel()
-//        {
-//            Id = 0;
-//        }
+        //        public MovieFormViewModel()
+        //        {
+        //            Id = 0;
+        //        }
 
 
-        public MovieFormViewModel( Movie movie )
+        public MovieFormViewModel(Movie movie)
         {
             Id = movie.Id;
             Name = movie.Name;
@@ -44,7 +49,7 @@ namespace Vidly.ViewModels
 
         public MovieFormViewModel()
         {
-           
+            Id = 0;
         }
     }
 }
