@@ -62,6 +62,7 @@ namespace Vidly.Controllers
         //smarter enough to bind  this object to form data because all the keys in the 
         //form data have prefixs with customer, that's how model binding works 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
