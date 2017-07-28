@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Vidly.Models
 {
@@ -23,6 +23,9 @@ namespace Vidly.Models
         //EF can recognise this convention and tread this as a foreign key.
         [Display(Name="Membership Type")]
         public byte MembershipTypeId { get; set; }
+
+
+       
 
        
     }

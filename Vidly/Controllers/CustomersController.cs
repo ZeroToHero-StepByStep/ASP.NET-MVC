@@ -16,19 +16,16 @@ namespace Vidly.Controllers
             _context = new ApplicationDbContext();
         }
 
-
-
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new CustomerFormViewModel
+            var customer = new Customer();
+            var customerFormViewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membershipTypes,
-                Customer = new Customer() 
-                
+                Customer = customer 
             };
-
-            return View("CustomerForm",viewModel);
+            return View("CustomerForm",customerFormViewModel);
         }
 
 
@@ -62,11 +59,21 @@ namespace Vidly.Controllers
 
 
         //if we change the type from ViewCustomreModel to Customer, MVC Framewrok is 
-        //smater enough to bind  this object to form data because all the keys in the 
+        //smarter enough to bind  this object to form data because all the keys in the 
         //form data have prefixs with customer, that's how model binding works 
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var customerFormViewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return  View("CustomerForm", customerFormViewModel);
+            }
+
             if (customer.Id == 0)
             {
                 _context.Customers.Add(customer);
