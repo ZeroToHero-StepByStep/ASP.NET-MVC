@@ -63,25 +63,25 @@ namespace Vidly.Controllers
         //form data have prefixs with customer, that's how model binding works 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Customer customerDto)
+        public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
             {
                 var customerFormViewModel = new CustomerFormViewModel
                 {
-                    Customer = customerDto,
+                    Customer = customer,
                     MembershipTypes = _context.MembershipTypes.ToList()
                 };
                 return  View("CustomerForm", customerFormViewModel);
             }
 
-            if (customerDto.Id == 0)
+            if (customer.Id == 0)
             {
-                _context.Customers.Add(customerDto);
+                _context.Customers.Add(customer);
             }
             else
             {
-                var customerInDb = _context.Customers.Single(c => c.Id == customerDto.Id);
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
                 /*
                 TryUpdateModel(customerInDb);
                 this is the official approach in the official documment but this apporach 
@@ -98,10 +98,10 @@ namespace Vidly.Controllers
                 The bottom line is that you should not bindly read all the data in the requset data and put 
                 that into the objects. 
                 */
-                customerInDb.Name = customerDto.Name;
-                customerInDb.BirthDate = customerDto.BirthDate;
-                customerInDb.MembershipType = customerDto.MembershipType;
-                customerInDb.IsSubscribedToNewsLetter = customerDto.IsSubscribedToNewsLetter;
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.MembershipType = customer.MembershipType;
+                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Customers");
