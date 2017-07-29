@@ -17,7 +17,7 @@ namespace Vidly.Controllers.Api
             _context = new ApplicationDbContext();
         }
         //Get/api/customers
-        public IEnumerable<Customer> Customers()
+        public IEnumerable<Customer> GetCustomers()
         {
             return _context.Customers;
         }
