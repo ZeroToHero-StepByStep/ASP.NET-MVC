@@ -3,7 +3,6 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
 using AutoMapper  ;
-using Vidly.App_Start;
 
 namespace Vidly
 {
