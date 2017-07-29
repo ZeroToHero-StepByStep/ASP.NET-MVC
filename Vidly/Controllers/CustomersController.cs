@@ -39,12 +39,8 @@ namespace Vidly.Controllers
         public ActionResult Index()
         {
             
-            //when the following line is executed , EF is not going to query the database
-            //this is called deffered execution , the query will execute when it iterates 
-            //the customers object 
-            var customers = _context.Customers.Include(c => c.MembershipType);  
 
-            return View(customers);
+            return View();
         }
 
         public ActionResult Detail(int id)
