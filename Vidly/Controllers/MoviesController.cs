@@ -50,11 +50,11 @@ namespace Vidly.Controllers
         public ActionResult Index()
         {
             
-            MovieViewModel movies = new MovieViewModel()
-            {
-                Movies = _context.Movies.Include(c => c.Genre) 
-            };
-            return View(movies);
+//            MovieViewModel movies = new MovieViewModel()
+//            {
+//                Movies = _context.Movies.Include(c => c.Genre) 
+//            };
+            return View();
         }
 
         public ActionResult Detail(int id)
