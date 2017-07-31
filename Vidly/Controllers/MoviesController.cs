@@ -49,12 +49,11 @@ namespace Vidly.Controllers
 
         public ActionResult Index()
         {
-            
-//            MovieViewModel movies = new MovieViewModel()
-//            {
-//                Movies = _context.Movies.Include(c => c.Genre) 
-//            };
-            return View();
+            if (User.IsInRole(RoleName.CanManageMovie))
+            {
+                return View("List");
+            }
+            return View("ReadOnlyList");
         }
 
         public ActionResult Detail(int id)
@@ -67,6 +66,8 @@ namespace Vidly.Controllers
             return View(movie);
         }
 
+
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public ActionResult New()
         {
 //            var dateTime = Convert.ToDateTime("2017");
