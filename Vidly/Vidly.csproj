@@ -350,6 +350,10 @@
     <Compile Include="Migrations\201708010220550_AddPhoneToApplicationUserModel.Designer.cs">
       <DependentUpon>201708010220550_AddPhoneToApplicationUserModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708010441228_AddRentalClassModel.cs" />
+    <Compile Include="Migrations\201708010441228_AddRentalClassModel.Designer.cs">
+      <DependentUpon>201708010441228_AddRentalClassModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -359,6 +363,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -723,6 +728,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708010220550_AddPhoneToApplicationUserModel.resx">
       <DependentUpon>201708010220550_AddPhoneToApplicationUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708010441228_AddRentalClassModel.resx">
+      <DependentUpon>201708010441228_AddRentalClassModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
