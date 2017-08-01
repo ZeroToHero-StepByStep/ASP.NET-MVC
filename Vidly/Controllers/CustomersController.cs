@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using System.Linq ;
 using System.Data.Entity ;
+using System.Runtime.Caching;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -39,7 +42,16 @@ namespace Vidly.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            
+// don't use this apporach blindly
+// 1. increate memory consumption of your application 
+// 2. lead to unnecessary complexity both in the architectural and code level , specially in ef sometimes 
+// use it until u do the performance profiling and use it to display data , not to modify data.
+//            if (MemoryCache.Default["Genres"] == null)
+//            {
+//                MemoryCache.Default["Genres"] = _context.Genres.ToList();
+//            }
+//
+//            var genres = MemoryCache.Default["Genres"] as IEnumerable<Genre>;
 
             return View();
         }
