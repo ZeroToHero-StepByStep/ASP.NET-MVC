@@ -322,13 +322,9 @@
     <Compile Include="Migrations\201707310249180_AddDrivingLicenseToApplicationUser.Designer.cs">
       <DependentUpon>201707310249180_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708010005196_AddPhoneToApplicationUserModel.cs" />
-    <Compile Include="Migrations\201708010005196_AddPhoneToApplicationUserModel.Designer.cs">
-      <DependentUpon>201708010005196_AddPhoneToApplicationUserModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708010009530_DeletePhoneToApplicationUserModel.cs" />
-    <Compile Include="Migrations\201708010009530_DeletePhoneToApplicationUserModel.Designer.cs">
-      <DependentUpon>201708010009530_DeletePhoneToApplicationUserModel.cs</DependentUpon>
+    <Compile Include="Migrations\201708010220550_AddPhoneToApplicationUserModel.cs" />
+    <Compile Include="Migrations\201708010220550_AddPhoneToApplicationUserModel.Designer.cs">
+      <DependentUpon>201708010220550_AddPhoneToApplicationUserModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -700,11 +696,8 @@
     <EmbeddedResource Include="Migrations\201707310249180_AddDrivingLicenseToApplicationUser.resx">
       <DependentUpon>201707310249180_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708010005196_AddPhoneToApplicationUserModel.resx">
-      <DependentUpon>201708010005196_AddPhoneToApplicationUserModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708010009530_DeletePhoneToApplicationUserModel.resx">
-      <DependentUpon>201708010009530_DeletePhoneToApplicationUserModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708010220550_AddPhoneToApplicationUserModel.resx">
+      <DependentUpon>201708010220550_AddPhoneToApplicationUserModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

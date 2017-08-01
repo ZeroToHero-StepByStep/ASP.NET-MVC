@@ -9,6 +9,7 @@ using System.Data.Entity ;
 
 namespace Vidly.Controllers.Api
 {
+   
     public class MoviesController : ApiController
     {
         private ApplicationDbContext _context;
@@ -18,6 +19,7 @@ namespace Vidly.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
+        //[Authorize(Roles = RoleName.CanManageMovie)]
         [HttpGet]
         public IEnumerable<MovieDto> GetMovies()
         {
