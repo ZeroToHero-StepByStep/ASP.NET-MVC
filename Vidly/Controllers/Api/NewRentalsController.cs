@@ -23,16 +23,27 @@ namespace Vidly.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateNewRentals(NewRentalDto newRentalDto)
         {
-            //the reason that we use the Single method becuase that we assume that the client will send 
-            //the right customerId, and the staff member will select customerId from a pick list or something 
-            //If a melicious user wants to send us invalid customerId , the Single method will get an exception
-            //and the melicious user will get a vague internal server error in the response
-            //If you are building a public API that can be used by various applications that's a different story
-            //then you will use SingleOrDefault
+            if (newRentalDto.MovieIds.Count == 0)
+            {
+                return BadRequest("No movie ids have been given");
+            }
+
             var customer = _context.Customers.Single(c => c.Id == newRentalDto.CustomerId);
-            var movies = _context.Movies.Where(m => newRentalDto.MovieIds.Contains(m.Id));
+            if (customer == null)
+            {
+                return BadRequest("CustomerId is not valid");
+            }
+            var movies = _context.Movies.Where(m => newRentalDto.MovieIds.Contains(m.Id)).ToList();
+            if (movies.Count() != newRentalDto.MovieIds.Count())
+            {
+                return BadRequest("One or more MovieIds are invalid");
+            }
             foreach (var movie in movies)
             {
+                if (movie.NumberAvailable == 0)
+                {
+                    return BadRequest("There is no available movie");
+                }
                 movie.NumberAvailable--;
                 var rental = new Rental
                 {
