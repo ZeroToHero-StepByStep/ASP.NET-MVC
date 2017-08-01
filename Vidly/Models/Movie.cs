@@ -14,13 +14,22 @@ namespace Vidly.Models
 
         [Required]
         public DateTime ReleaseDate { get; set; }
+
         public DateTime DateAdded { get; set; }
+
         [Required]
         [Range(1,20)]
         public int NumberInStock { get; set; }
+
+        public int  NumberAvailable { get; set; }
+
         public int GenreId { get; set; }
         [ForeignKey("GenreId")]
+
         public Genre Genre { get; set; }
+
+
+
        
     }
 }

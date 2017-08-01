@@ -33,6 +33,7 @@ namespace Vidly.Controllers.Api
             var movies = _context.Movies.Where(m => newRentalDto.MovieIds.Contains(m.Id));
             foreach (var movie in movies)
             {
+                movie.NumberAvailable--;
                 var rental = new Rental
                 {
                     MovieId = movie.Id,
@@ -40,6 +41,7 @@ namespace Vidly.Controllers.Api
                     DateRented = DateTime.Now
                 };
                 _context.Rentals.Add(rental);
+//                _context.Movies.
             }
             //the reason there we don't use the Create method becuase we don't create a single newly 
             //object, we created multiple objects. When we use the Create method, we need to create a 
