@@ -23,23 +23,12 @@ namespace Vidly.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateNewRentals(NewRentalDto newRentalDto)
         {
-            if (newRentalDto.MovieIds.Count == 0)
-            {
-                return BadRequest("No movie ids have been given");
-            }
-
+          
             var customer = _context.Customers.Single(c => c.Id == newRentalDto.CustomerId);
-            if (customer == null)
-            {
-                return BadRequest("CustomerId is not valid");
-            }
             var movies = _context.Movies.Where(m => newRentalDto.MovieIds.Contains(m.Id)).ToList();
-            if (movies.Count() != newRentalDto.MovieIds.Count())
-            {
-                return BadRequest("One or more MovieIds are invalid");
-            }
             foreach (var movie in movies)
             {
+                //to prevent malicious user
                 if (movie.NumberAvailable == 0)
                 {
                     return BadRequest("There is no available movie");
