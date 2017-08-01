@@ -2,9 +2,12 @@
 
 namespace Vidly.Controllers
 {
-    [AllowAnonymous] 
+    [AllowAnonymous]
     public class HomeController : Controller
     {
+        //don't use the caching unless u test it already , really need this
+        //        [OutputCache(Duration = 50, Location = System.Web.UI.OutputCacheLocation.Server, VaryByParam = "*")]
+        //        [OutputCache(Duration = 0, VaryByParam = "*", NoStore = true)]
         public ActionResult Index()
         {
             return View();
