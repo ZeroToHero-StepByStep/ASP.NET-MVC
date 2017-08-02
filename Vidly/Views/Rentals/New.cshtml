@@ -23,6 +23,7 @@ we are going to use raw HTML
         <label>Movie</label>
         <input id="movie" type="text" value="" class="form-control"/>
     </div>
+    <ul id="movies" class="list-group"></ul>
     <button class="btn btn-primary">Submit</button>
 </form>
 
@@ -30,35 +31,56 @@ we are going to use raw HTML
 @section scripts
 {
     <script>
-        $(document).ready(function() {
-
-            var vm = {};
-            var customers = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                remote: {
-                    url: '/api/customers?query=%QUERY',
-                    wildcard: '%QUERY'
-                }
-            });
-
-            $('#customer').typeahead({
-                    minLength: 3,
-                    highlight: true
-                },
-                {
-                    name: 'customers',
-                    display: 'name',
-                    source: customers
+        $(document).ready
+        (
+            function() {
+                var vm = { movieIds: [] };
+                //customers 
+                var customers = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: {
+                        url: '/api/customers?query=%QUERY',
+                        wildcard: '%QUERY'
+                    }
                 });
 
-        }).on("typeahead:select",
-            function(e, customer) {
-                vm.customerId = customer.id;
+                $('#customer').typeahead({
+                        minLength: 3,
+                        highlight: true
+                    },
+                    {
+                        name: 'customers',
+                        display: 'name',
+                        source: customers
+                    }).on("typeahead:select",
+                    function(e, customer) {
+                        vm.customerId = customer.id;
+                    });
+
+                //movies
+                var movies = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: {
+                        url: '/api/movies?query=%QUERY',
+                        wildcard: '%QUERY'
+                    }
+                });
+                $('#movie').typeahead({
+                        minLength: 3,
+                        highlight: true
+                    },
+                    {
+                        name: 'movies',
+                        display: 'name',
+                        source: movies
+                    }).on("typeahead:select",
+                    function (e, movie) {
+                        $("#movies").append("<li>" + movie.name + "</li>");
+                        $("#movie").typeahead("val", "");
+                        vm.movieIds.push(movie.id);
+                    });
             });
-
-
-
-
     </script>
 }
