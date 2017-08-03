@@ -17,7 +17,7 @@ we are going to use raw HTML
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customer" type="text" value="" class="form-control"/>
+            <input id="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control"/>
         </div>
     </div>
 
@@ -38,6 +38,7 @@ we are going to use raw HTML
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval") ;
     <script>
         $(document).ready
         (
@@ -66,7 +67,7 @@ we are going to use raw HTML
                         vm.customerId = customer.id;
                     
                     });
-
+                
                 //movies
                 var movies = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -76,6 +77,7 @@ we are going to use raw HTML
                         wildcard: '%QUERY'
                     }
                 });
+                
                 $('#movie').typeahead({
                         minLength: 3,
                         highlight: true
@@ -89,25 +91,33 @@ we are going to use raw HTML
                         $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
                         $("#movie").typeahead("val", "");
                         vm.movieIds.push(movie.id);
-                    });
+                    } );
 
-                $("#newRental").submit(function(e) {
-                    //this will prevent the form from submitting normally
-                    e.preventDefault();
-                    $.ajax({
-                            url: "/api/newRentals/",
-                            method: "post",
-                            data: vm
-                        })
-                        .done(function() {
-                            toastr.success('Rentals successfully recored.');
-                            console.log("done");
-                        })
-                        .fail(function() {
-                            toastr.error("something unexpeted happened");
-                            console.fail("done");
-                        });
+                $.validator.addMethod("validCustomer" , function() {
+                    return vm.customerId && vm.customerId !== 0;
+                }, "Please select a valid customer");
+
+                $("#newRental").validate({
+                    submitHandler:function() {
+                        //this will prevent the form from submitting normally
+                        e.preventDefault();
+                        $.ajax({
+                                url: "/api/newRentals/",
+                                method: "post",
+                                data: vm
+                            })
+                            .done(function () {
+                                toastr.success('Rentals successfully recored.');
+                                console.log("done");
+                            })
+                            .fail(function () {
+                                toastr.error("something unexpeted happened");
+                                console.fail("done");
+                            });
+                    }
                 });
+
+              
             });
     </script>
 }
