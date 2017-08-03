@@ -17,14 +17,14 @@ we are going to use raw HTML
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control"/>
+            <input id="customer" name="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control"/>
         </div>
     </div>
 
     <div class="form-group">
         <label>Movie</label>
         <div class="tt-container">
-            <input id="movie" type="text" value="" class="form-control"/>
+            <input id="movie" name="movie" type="text" data-rule-atLeastOneMovie="true" value="" class="form-control"/>
         </div>
     </div>
     <div class="row">
@@ -53,7 +53,7 @@ we are going to use raw HTML
                         wildcard: '%QUERY'
                     }
                 });
-                
+
                 $('#customer').typeahead({
                         minLength: 3,
                         highlight: true
@@ -65,9 +65,9 @@ we are going to use raw HTML
                     }).on("typeahead:select",
                     function(e, customer) {
                         vm.customerId = customer.id;
-                    
+
                     });
-                
+
                 //movies
                 var movies = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -77,7 +77,7 @@ we are going to use raw HTML
                         wildcard: '%QUERY'
                     }
                 });
-                
+
                 $('#movie').typeahead({
                         minLength: 3,
                         highlight: true
@@ -91,33 +91,46 @@ we are going to use raw HTML
                         $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
                         $("#movie").typeahead("val", "");
                         vm.movieIds.push(movie.id);
-                    } );
+                    });
 
-                $.validator.addMethod("validCustomer" , function() {
-                    return vm.customerId && vm.customerId !== 0;
-                }, "Please select a valid customer");
+                $.validator.addMethod("validCustomer",
+                    function() {
+                        return vm.customerId && vm.customerId !== 0;
+                    },
+                    "Please select a valid customer");
 
-                $("#newRental").validate({
-                    submitHandler:function() {
-                        //this will prevent the form from submitting normally
-                        e.preventDefault();
+                $.validator.addMethod("atLeastOneMovie",
+                    function() {
+                        return vm.movieIds.length >= 1;
+                    },
+                    "Please input at least one movie");
+
+               var validator = $("#newRental").validate({
+                    submitHandler: function() {
                         $.ajax({
                                 url: "/api/newRentals/",
                                 method: "post",
                                 data: vm
                             })
-                            .done(function () {
+                            .done(function() {
                                 toastr.success('Rentals successfully recored.');
                                 console.log("done");
+                                //clear the form 
+                                $("#customer").typeahead("val", "");
+                                $("#movie").typeahead("val", "");
+                                $("#movies").empty();
+                                vm = { movieIds: [] };
+                                validator.resetForm();
                             })
-                            .fail(function () {
+                            .fail(function() {
                                 toastr.error("something unexpeted happened");
                                 console.fail("done");
                             });
+                        return false;
                     }
                 });
 
-              
+
             });
     </script>
 }
