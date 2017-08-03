@@ -17,11 +17,16 @@ namespace Vidly.Controllers.Api
             _context = new ApplicationDbContext();
         }
         //Get/api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers(string query=null)
         {
-            return _context.Customers.Include( c => c.MembershipType)
-                                     .ToList()
-                                     .Select(Mapper.Map<Customer,CustomerDto>);
+            var customerQuery = _context.Customers.Include(c => c.MembershipType);
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                customerQuery = customerQuery.Where(c => c.Name.Contains(query));
+            }
+            var customerDto = customerQuery.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return Ok(customerDto);
         }
 
         //Get/api/customers/1
@@ -33,6 +38,7 @@ namespace Vidly.Controllers.Api
             {
                 return NotFound();
             }
+
             return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
 

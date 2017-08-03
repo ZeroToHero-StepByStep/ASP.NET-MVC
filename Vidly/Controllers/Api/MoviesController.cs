@@ -42,8 +42,6 @@ namespace Vidly.Controllers.Api
         {
             try
             {
-
-
                 if (!ModelState.IsValid)
                 {
                     return BadRequest();
