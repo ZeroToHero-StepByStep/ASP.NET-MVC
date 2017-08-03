@@ -13,7 +13,7 @@ we are going to use raw HTML
 
 @*Ajax.BeginForm() is to call MVC controlers not api controlllers*@
 
-<form action="~/Controllers/Api/">
+<form id="newRental">
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
@@ -64,6 +64,7 @@ we are going to use raw HTML
                     }).on("typeahead:select",
                     function(e, customer) {
                         vm.customerId = customer.id;
+                    
                     });
 
                 //movies
@@ -84,11 +85,28 @@ we are going to use raw HTML
                         display: 'name',
                         source: movies
                     }).on("typeahead:select",
-                    function (e, movie) {
+                    function(e, movie) {
                         $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
                         $("#movie").typeahead("val", "");
                         vm.movieIds.push(movie.id);
                     });
+
+                $("#newRental").submit(function(e) {
+                    //this will prevent the form from submitting normally
+                    e.preventDefault();
+                    $.ajax({
+                            url: "/api/newRentals/",
+                            method: "post",
+                            data: vm
+                        })
+                        .done(function() {
+                            console.log("done");
+
+                        })
+                        .fail(function() {
+                            console.log("fail");
+                        });
+                });
             });
     </script>
 }
