@@ -52,7 +52,7 @@ we are going to use raw HTML
                         wildcard: '%QUERY'
                     }
                 });
-
+                
                 $('#customer').typeahead({
                         minLength: 3,
                         highlight: true
@@ -100,11 +100,12 @@ we are going to use raw HTML
                             data: vm
                         })
                         .done(function() {
+                            toastr.success('Rentals successfully recored.');
                             console.log("done");
-
                         })
                         .fail(function() {
-                            console.log("fail");
+                            toastr.error("something unexpeted happened");
+                            console.fail("done");
                         });
                 });
             });
